@@ -3,8 +3,11 @@ const app = express();
 const rotaProdutos = require("./routes/produtos");
 const rotaPedidos = require("./routes/pedidos");
 const morgan = require("morgan");
+const bodyParser = require('body-parser');
 
 app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({extended: false})); // Apenas aceita dados simples
+app.use(bodyParser.json());
 app.use("/produtos", rotaProdutos);
 app.use("/pedidos", rotaPedidos);
 

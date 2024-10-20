@@ -10,18 +10,23 @@ router.get("/", (req, res, next) => {
 
 //INSERIR UM PEDIDO
 router.post("/", (req, res, next) => {
+  const pedido = {
+    id_produto: req.body.id_produto,
+    quantidade: req.body.quantidade,
+  };
   res.status(201).send({
     message: "O pedido foi criado",
+    pedidoCriado: pedido,
   });
 });
 
 //RETORNA DADOS DE UM PEDIDO
 router.get("/:id_pedido", (req, res, next) => {
   const id = req.params.id_pedido;
-    res.status(200).send({
-      message: "Detalhes do pedido",
-      id: id,
-    });
+  res.status(200).send({
+    message: "Detalhes do pedido",
+    id: id,
+  });
 });
 
 //ALTERA UM PEDIDO
